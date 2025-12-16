@@ -15,6 +15,7 @@ This checklist helps finish the remaining SEO setup and verification for this po
 - [ ] Optional: add `og:image:alt` and any missing social meta on key pages.
  - [ ] Preload the LCP / hero image: add `<link rel="preload" as="image" href="/og-image.png">` in `app/layout.tsx` (already added).
  - [ ] Ensure `og-image.png` and alternate sizes (`og-image-1200x1200.png`, `og-image.webp`) are present in `public/` and optimized (AVIF/WebP + correct sizes).
+  - You can run `pnpm run seo:generate-og` to download `og-image.png` and (with `sharp` installed) generate `og-image-1200x630.webp` and AVIF variants.
 
 Commands
 --------
