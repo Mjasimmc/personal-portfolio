@@ -34,6 +34,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta httpEquiv="Content-Language" content="en" />
         <link rel="alternate" hrefLang="en" href="https://jasim-sct.vercel.app/" />
         <link rel="icon" href="/favicon.svg" />
+        {/* Preload main social / hero image to improve LCP and social preview render */}
+        <link rel="preload" as="image" href="/og-image.png" />
+        {/* Hint theme color for browsers / address bar */}
+        <meta name="theme-color" content="#000000" />
+        {/* Helpful for social accessibility */}
+        <meta property="og:image:alt" content="Portrait / branding image for Muhammed Jasim" />
         {/* Google Analytics placeholder - set NEXT_PUBLIC_GA_ID in env to enable */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <script

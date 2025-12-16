@@ -13,6 +13,8 @@ This checklist helps finish the remaining SEO setup and verification for this po
 - [ ] Run Rich Results Test / Structured Data Testing Tool and fix any warnings from `lib/structured-data.tsx`.
 - [ ] Validate Open Graph previews with Facebook Sharing Debugger and Twitter Card Validator.
 - [ ] Optional: add `og:image:alt` and any missing social meta on key pages.
+ - [ ] Preload the LCP / hero image: add `<link rel="preload" as="image" href="/og-image.png">` in `app/layout.tsx` (already added).
+ - [ ] Ensure `og-image.png` and alternate sizes (`og-image-1200x1200.png`, `og-image.webp`) are present in `public/` and optimized (AVIF/WebP + correct sizes).
 
 Commands
 --------
