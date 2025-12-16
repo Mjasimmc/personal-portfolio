@@ -1,0 +1,5 @@
+# llms.txt placeholder
+# If you intend to configure allowed language models, list them here, one per line.
+# Example:
+# openai-gpt-4
+# anthropic-cl100k

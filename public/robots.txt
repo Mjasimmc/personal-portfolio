@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Sitemap: https://jasim-sct.vercel.app/sitemap.xml
