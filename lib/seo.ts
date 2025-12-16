@@ -117,7 +117,13 @@ export function generateMetadata({
       },
     },
     verification: {
-      google: 'your-google-verification-code',
+      // Read site verification from environment so secrets aren't checked into source.
+      // Set either `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` (for client exposure) or
+      // `GOOGLE_SITE_VERIFICATION` in your deployment environment (recommended).
+      google:
+        (process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION) as
+        | string
+        | undefined,
     },
   }
 }
