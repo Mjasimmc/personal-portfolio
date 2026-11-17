@@ -117,6 +117,10 @@ export function Nav() {
       e.preventDefault();
       setOpen(false);
       setActive(id);
+      // The mobile menu locks scroll (body overflow + Lenis stop); release it before scrolling,
+      // otherwise the scroll is silently ignored and the tap looks like it did nothing.
+      document.body.style.overflow = "";
+      lenisRef.current?.start();
       scrollToHash(`#${id}`);
       history.replaceState(null, "", id === "home" ? "/" : `#${id}`);
     },

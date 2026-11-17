@@ -7,7 +7,7 @@ export function scrollToHash(hash: string) {
   const el = document.querySelector<HTMLElement>(hash);
   if (!el) return;
   if (lenisRef.current) {
-    lenisRef.current.scrollTo(el, { duration: 1.4 });
+    lenisRef.current.scrollTo(el, { duration: 1.4, force: true });
     return;
   }
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
