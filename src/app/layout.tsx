@@ -1,17 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { JsonLd, personSchema, websiteSchema } from "@/lib/jsonld";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Cursor } from "@/components/layout/Cursor";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#050507",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
 };
@@ -33,28 +43,38 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
   },
-  twitter: {
-    card: "summary_large_image",
-    creator: site.twitter,
-    title: site.title,
-    description: site.description,
-  },
+  twitter: { card: "summary_large_image", title: site.title, description: site.description },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
-  // verification: { google: "YOUR_GOOGLE_SITE_VERIFICATION" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col">
+        <noscript>
+          <style>{`.gs-reveal{opacity:1!important}`}</style>
+        </noscript>
         <JsonLd data={personSchema} />
         <JsonLd data={websiteSchema} />
-        <a href="#main" className="sr-only focus:not-sr-only focus:p-2">Skip to content</a>
+        <a
+          href="#main"
+          className="sr-only z-[80] rounded-full bg-mist px-4 py-2 text-obsidian focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to content
+        </a>
+        <div className="grain" aria-hidden />
+        <SmoothScroll />
+        <Cursor />
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

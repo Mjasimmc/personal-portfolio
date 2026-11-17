@@ -1,5 +1,6 @@
 import { absoluteUrl, site } from "./site";
-import type { Project } from "@/data/projects";
+import { education, experience } from "@/data/portfolio";
+import type { Project } from "@/types/portfolio";
 
 export function JsonLd({ data }: { data: object }) {
   return (
@@ -21,6 +22,9 @@ export const personSchema = {
   email: `mailto:${site.email}`,
   sameAs: site.sameAs,
   knowsAbout: site.skills,
+  address: { "@type": "PostalAddress", addressLocality: "Kozhikode", addressRegion: "Kerala", addressCountry: "IN" },
+  worksFor: { "@type": "Organization", name: experience[0].company },
+  alumniOf: education.map((e) => ({ "@type": "EducationalOrganization", name: e.institution })),
 };
 
 export const websiteSchema = {
@@ -38,9 +42,9 @@ export const projectSchema = (p: Project) => ({
   "@context": "https://schema.org",
   "@type": "CreativeWork",
   name: p.title,
-  description: p.description,
+  description: p.summary,
   url: absoluteUrl(`/projects/${p.slug}`),
-  datePublished: p.date,
+  datePublished: String(p.year),
   keywords: p.tech.join(", "),
   author: { "@id": absoluteUrl("/#person") },
 });
