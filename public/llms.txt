@@ -1,0 +1,13 @@
+# Muhammed Jasim M C
+
+> Tech engineer from Kozhikode, Kerala, India. Full stack engineering and development, technical research, prototyping and engineering help. Open to clients worldwide.
+
+## Pages
+- [Portfolio](https://jasim-sct.vercel.app/): profile, skills, projects, community
+- [Services](https://jasim-sct.vercel.app/services): what can be hired, stack, FAQ
+
+## Contact
+- Phone / WhatsApp: +91 97782 18906
+- Email: mjasimmc@gmail.com
+- GitHub: https://github.com/jasim-sct
+- LinkedIn: https://www.linkedin.com/in/muhamed-jasim-dev/

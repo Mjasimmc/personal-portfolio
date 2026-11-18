@@ -17,9 +17,22 @@ export const personSchema = {
   "@type": "Person",
   "@id": absoluteUrl("/#person"),
   name: site.name,
+  alternateName: ["Muhammed Jasim M C", "Jasim MC"],
+  description: site.description,
+  image: absoluteUrl("/opengraph-image"),
   url: site.url,
+  mainEntityOfPage: absoluteUrl("/"),
   jobTitle: site.jobTitle,
   email: `mailto:${site.email}`,
+  telephone: site.phone,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: site.phone,
+    email: site.email,
+    contactType: "engineering and development enquiries",
+    areaServed: "Worldwide",
+    availableLanguage: ["English", "Malayalam"],
+  },
   sameAs: site.sameAs,
   knowsAbout: site.skills,
   address: { "@type": "PostalAddress", addressLocality: "Kozhikode", addressRegion: "Kerala", addressCountry: "IN" },
@@ -36,6 +49,43 @@ export const websiteSchema = {
   description: site.description,
   inLanguage: "en",
   publisher: { "@id": absoluteUrl("/#person") },
+};
+
+export const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": absoluteUrl("/#service"),
+  name: `${site.name} | Engineering & Development`,
+  url: site.url,
+  telephone: site.phone,
+  email: site.email,
+  founder: { "@id": absoluteUrl("/#person") },
+  areaServed: "Worldwide",
+  address: { "@type": "PostalAddress", addressLocality: "Kozhikode", addressRegion: "Kerala", addressCountry: "IN" },
+  knowsAbout: site.services,
+  makesOffer: site.services.map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
+};
+
+export const faqSchema = (items: readonly { q: string; a: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+
+export const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": absoluteUrl("/#profilepage"),
+  url: site.url,
+  name: site.title,
+  description: site.description,
+  inLanguage: "en",
+  mainEntity: { "@id": absoluteUrl("/#person") },
+  isPartOf: { "@id": absoluteUrl("/#website") },
 };
 
 export const projectSchema = (p: Project) => ({

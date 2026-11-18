@@ -6,14 +6,16 @@ export const profile: Profile = {
   fullName: "Muhammed Jasim M C",
   firstName: "Muhammed",
   lastName: "Jasim",
-  title: "Tech Enthusiast",
-  designation: "Tech Enthusiast",
+  title: "Tech Engineer",
+  designation: "Tech Engineer",
   statement:
     "Travelling through the world of tech — adapting to new technologies, learning where the future is heading, and building an identity along the way.",
   summary:
     "A tech enthusiast travelling through the world of technology. Always willing to adapt to new tools and ideas, curious about the future of tech, and building an identity through what I learn and make.",
   location: "Kozhikode, Kerala, India",
   email: "mjasimmc@gmail.com",
+  phone: "+919778218906",
+  phoneDisplay: "+91 97782 18906",
   yearsExperience: "3+",
   links: [
     { label: "GitHub", href: "https://github.com/jasim-sct", handle: "github.com/jasim-sct" },

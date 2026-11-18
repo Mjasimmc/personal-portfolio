@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { site } from "@/lib/site";
-import { JsonLd, personSchema, websiteSchema } from "@/lib/jsonld";
+import { JsonLd, personSchema, profilePageSchema, serviceSchema, websiteSchema } from "@/lib/jsonld";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Cursor } from "@/components/layout/Cursor";
 import { Nav } from "@/components/layout/Nav";
@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
+  category: "technology",
+  formatDetection: { telephone: false, email: false, address: false },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -65,6 +67,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </noscript>
         <JsonLd data={personSchema} />
         <JsonLd data={websiteSchema} />
+        <JsonLd data={serviceSchema} />
+        <JsonLd data={profilePageSchema} />
         <a
           href="#main"
           className="sr-only z-[80] rounded-full bg-mist px-4 py-2 text-obsidian focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

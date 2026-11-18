@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { profile } from "@/data/portfolio";
 
 export function Footer() {
@@ -21,6 +22,11 @@ export function Footer() {
           </p>
         </div>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
+          <li>
+            <Link href="/services" className="label-mono text-silver transition-colors hover:text-mist">
+              Services
+            </Link>
+          </li>
           {profile.links.map((l) => (
             <li key={l.href}>
               <a

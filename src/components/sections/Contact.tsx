@@ -97,6 +97,23 @@ export function Contact() {
                 {copied ? "Email address copied to clipboard" : ""}
               </span>
             </div>
+            <p className="label-mono mt-8">Phone / WhatsApp</p>
+            <div className="mt-3 flex flex-wrap items-center gap-4">
+              <a
+                href={`tel:${profile.phone}`}
+                className="text-[clamp(1.15rem,5vw,2rem)] tracking-tight text-mist transition-colors hover:text-electric"
+              >
+                {profile.phoneDisplay}
+              </a>
+              <a
+                href={`https://wa.me/${profile.phone.replace("+", "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-line px-4 py-2 font-mono text-[11px] tracking-wider text-silver transition-colors hover:border-silver/50 hover:text-mist"
+              >
+                WhatsApp
+              </a>
+            </div>
             <form onSubmit={submit} noValidate className="mt-10 flex max-w-xl flex-col gap-4">
               <label className="flex flex-col gap-2">
                 <span className="label-mono">Name</span>

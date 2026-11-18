@@ -62,6 +62,8 @@ export type Profile = {
   summary: string;
   location: string;
   email: string;
+  phone: string;
+  phoneDisplay: string;
   yearsExperience: string;
   links: { label: string; href: string; handle: string }[];
 };
