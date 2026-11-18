@@ -24,7 +24,7 @@ export const profile: Profile = {
       href: "https://www.linkedin.com/in/muhamed-jasim-dev/",
       handle: "linkedin.com/in/muhamed-jasim-dev",
     },
-    { label: "Website", href: "https://jasim-sct.vercel.app", handle: "jasim-sct.vercel.app" },
+    { label: "Website", href: "https://jasim.syncircle.org", handle: "jasim.syncircle.org" },
   ],
 };
 

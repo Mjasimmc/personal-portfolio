@@ -14,6 +14,17 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   compress: true,
   images: { formats: ["image/avif", "image/webp"] },
+  // Send the old vercel.app host to the custom domain so search engines see one canonical site.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "jasim-sct.vercel.app" }],
+        destination: "https://jasim.syncircle.org/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

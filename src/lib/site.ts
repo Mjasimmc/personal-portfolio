@@ -6,7 +6,7 @@ export const site = {
   title: `${profile.name} | ${profile.title}`,
   titleTemplate: `%s | ${profile.name}`,
   description: `${profile.name} is a tech engineer from ${profile.location}. Fast, reliable engineering and development: full stack web apps, research, prototyping and technical help with React, Next.js, TypeScript and Node.js. Available to hire.`,
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://jasim-sct.vercel.app").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://jasim.syncircle.org").replace(/\/$/, ""),
   locale: "en_IN",
   jobTitle: profile.title,
   email: profile.email,
