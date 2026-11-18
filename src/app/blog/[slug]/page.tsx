@@ -66,7 +66,12 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
           </section>
         ))}
       </article>
-      <footer className="mt-20 border-t border-line pt-10">
+      <footer className="mt-20 flex flex-wrap items-center gap-8 border-t border-line pt-10">
+        {p.projectSlug && (
+          <Link href={`/projects/${p.projectSlug}`} className="label-mono text-silver transition-colors hover:text-mist">
+            View the project →
+          </Link>
+        )}
         <Link href="/blog" className="label-mono transition-colors hover:text-mist">
           ← All posts
         </Link>
