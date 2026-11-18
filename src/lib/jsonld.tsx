@@ -76,6 +76,22 @@ export const faqSchema = (items: readonly { q: string; a: string }[]) => ({
   })),
 });
 
+export const blogPostingSchema = (p: { slug: string; title: string; description: string; date: string; tags: string[] }) => ({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: p.title,
+  description: p.description,
+  url: absoluteUrl(`/blog/${p.slug}`),
+  mainEntityOfPage: absoluteUrl(`/blog/${p.slug}`),
+  datePublished: p.date,
+  dateModified: p.date,
+  keywords: p.tags.join(", "),
+  inLanguage: "en",
+  image: absoluteUrl("/opengraph-image"),
+  author: { "@id": absoluteUrl("/#person") },
+  publisher: { "@id": absoluteUrl("/#person") },
+});
+
 export const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",

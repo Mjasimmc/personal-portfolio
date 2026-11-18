@@ -4,6 +4,9 @@
 
 ## Pages
 - [Portfolio](https://jasim.syncircle.org/): profile, skills, projects, community
+- [About](https://jasim.syncircle.org/about): who Muhammed Jasim is, toolkit, community
+- [Research](https://jasim.syncircle.org/research): technical research areas and process
+- [Blog](https://jasim.syncircle.org/blog): articles on engineering, SEO and structured data
 - [Services](https://jasim.syncircle.org/services): what can be hired, stack, FAQ
 
 ## Contact
