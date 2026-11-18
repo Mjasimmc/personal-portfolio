@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         <header className="mt-10 grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
             <p className="label-mono">
-              <span className="text-electric">0{idx + 1}</span> — {p.kind} · {p.period}
+              <span className="text-electric">{String(idx + 1).padStart(2, "0")}</span> — {p.kind} · {p.period}
             </p>
             <h1 className="text-display mt-5 text-[clamp(2.8rem,7.5vw,7.5rem)] text-mist">{p.title}</h1>
           </div>

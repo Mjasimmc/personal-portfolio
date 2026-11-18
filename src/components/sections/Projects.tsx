@@ -85,7 +85,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
               )}
               style={{ transform: "translateZ(80px)" }}
             >
-              0{index + 1}
+              {String(index + 1).padStart(2, "0")}
             </span>
             <ProjectVisual
               kind={project.visual}
@@ -109,7 +109,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
 
       <div className={cn("md:col-span-5", flip && "md:order-1")}>
         <p className="label-mono">
-          <span className="text-electric">0{index + 1}</span> — {project.kind}
+          <span className="text-electric">{String(index + 1).padStart(2, "0")}</span> — {project.kind}
         </p>
         <h3 className="text-display mt-3 text-[clamp(2rem,8vw,3.6rem)] leading-[0.98] text-mist md:mt-4 md:text-[clamp(2rem,3.8vw,3.6rem)]">{project.title}</h3>
         <p className="mt-5 leading-relaxed text-silver-dim">{project.summary}</p>
