@@ -30,7 +30,7 @@ export function SectionHeading({ index, eyebrow, title, lede, className, align =
       <div className={cn("relative mt-6 gap-10", align === "split" && "md:grid md:grid-cols-12")}>
         <h2
           className={cn(
-            "text-display text-balance text-[clamp(2.4rem,9.5vw,5.6rem)] leading-[0.95] text-mist md:text-[clamp(2.6rem,6vw,5.6rem)] md:leading-[0.9]",
+            "text-display text-balance text-[clamp(2.6rem,10.5vw,6.5rem)] leading-[0.92] text-mist md:text-[clamp(2.8rem,7.2vw,7.5rem)] md:leading-[0.88]",
             align === "split" && "md:col-span-8",
           )}
         >

@@ -5,7 +5,7 @@ import { MOTION_OK, SplitText, gsap } from "@/components/animations/gsap";
 import { HeroCanvas } from "@/components/three/HeroCanvas";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { Magnetic } from "@/components/ui/Magnetic";
-import { experience, profile } from "@/data/portfolio";
+import { profile } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
@@ -63,7 +63,6 @@ export function Hero() {
     return () => mm.revert();
   }, []);
 
-  const current = experience[0];
 
   return (
     <section id="home" ref={root} className="relative min-h-[100svh] overflow-hidden">
@@ -100,7 +99,7 @@ export function Hero() {
             {profile.location}
           </p>
           <p data-hero-meta className="gs-reveal label-mono hidden text-right md:block">
-            Currently · {current.position} <span className="text-silver">@ {current.company}</span>
+            Currently · <span className="text-silver">Exploring RAG &amp; generative AI</span>
           </p>
         </div>
 

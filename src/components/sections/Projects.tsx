@@ -18,13 +18,13 @@ export function Projects() {
     <>
       <SectionHeading
         index="04"
-        eyebrow="Selected work"
+        eyebrow="Projects"
         title={
           <>
-            Platforms built to <span className="font-serif-italic text-silver">run a business.</span>
+            Things I&apos;ve built <span className="font-serif-italic text-silver">to learn by doing.</span>
           </>
         }
-        lede="Five production-grade platforms from the resume. It lists no public URLs, so none are invented — each piece gets an abstract visual, not a mock screenshot."
+        lede="Selected builds, what each one involved and the technology behind it. No public links are listed, so none are invented — each piece gets an abstract visual, not a mock screenshot."
       />
       <ol className="flex flex-col gap-16 md:gap-36">
         {projects.map((p, i) => (
@@ -68,8 +68,9 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
   }, [fine, reduced]);
 
   return (
-    <Reveal as="li" className="grid items-center gap-6 md:grid-cols-12 md:gap-12">
-      <div className={cn("md:col-span-7", flip && "md:order-2")}>
+    <Reveal as="li" className="grid items-start gap-6 md:grid-cols-12 md:gap-12">
+      {/* Visual stays pinned while the text column (incl. expanded details) scrolls past. */}
+      <div className={cn("md:sticky md:top-28 md:col-span-7", flip && "md:order-2")}>
         <Link
           href={`/projects/${project.slug}`}
           aria-label={`${project.title} — case study`}

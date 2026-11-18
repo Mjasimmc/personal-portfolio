@@ -7,10 +7,10 @@ export function Education() {
     <>
       <SectionHeading
         index="05"
-        eyebrow="Education & highlights"
+        eyebrow="Learning & highlights"
         title={
           <>
-            Trained on <span className="font-serif-italic text-silver">production</span>, not theory.
+            Always <span className="font-serif-italic text-silver">learning</span>, never finished.
           </>
         }
       />

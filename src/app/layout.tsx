@@ -7,6 +7,8 @@ import { JsonLd, personSchema, websiteSchema } from "@/lib/jsonld";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Cursor } from "@/components/layout/Cursor";
 import { Nav } from "@/components/layout/Nav";
+import { AmbientGlow } from "@/components/layout/AmbientGlow";
+import { ProgressRail } from "@/components/layout/ProgressRail";
 import { Footer } from "@/components/layout/Footer";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
@@ -73,6 +75,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SmoothScroll />
         <Cursor />
         <Nav />
+        <AmbientGlow />
+        <ProgressRail />
         {children}
         <Footer />
       </body>

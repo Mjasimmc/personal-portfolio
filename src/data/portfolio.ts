@@ -1,4 +1,4 @@
-// Source of truth: Muhammed Jasim's resume PDF. Do not add facts that are not in it.
+// Source of truth for site content. Identity copy is the owner's own; do not invent facts or metrics.
 import type { Education, Profile, Role, SkillCategory } from "@/types/portfolio";
 
 export const profile: Profile = {
@@ -6,12 +6,12 @@ export const profile: Profile = {
   fullName: "Muhammed Jasim M C",
   firstName: "Muhammed",
   lastName: "Jasim",
-  title: "Full Stack Software Developer",
-  designation: "Full Stack Developer",
+  title: "Tech Enthusiast",
+  designation: "Tech Enthusiast",
   statement:
-    "Three-plus years delivering scalable, production-ready web applications — from enterprise React and Next.js frontends to secure Node.js, NestJS and GraphQL services.",
+    "Travelling through the world of tech — adapting to new technologies, learning where the future is heading, and building an identity along the way.",
   summary:
-    "Full Stack Software Developer with 3+ years of experience delivering scalable web applications using React.js, Next.js, TypeScript, Node.js, NestJS, GraphQL, MongoDB, PostgreSQL, and MySQL. Proven experience building enterprise-grade frontend architectures, reusable component libraries, secure REST and GraphQL APIs, and cloud-ready backend services. Skilled in performance optimization, Docker, CI/CD, authentication, and modern software architecture with a strong focus on writing clean, maintainable, production-ready code.",
+    "A tech enthusiast travelling through the world of technology. Always willing to adapt to new tools and ideas, curious about the future of tech, and building an identity through what I learn and make.",
   location: "Kozhikode, Kerala, India",
   email: "mjasimmc@gmail.com",
   yearsExperience: "3+",
@@ -195,9 +195,33 @@ export const highlights: string[] = [
 export const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "expertise", label: "Expertise" },
-  { id: "experience", label: "Experience" },
+  { id: "expertise", label: "Toolkit" },
+  { id: "experience", label: "Journey" },
   { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
+  { id: "education", label: "Learning" },
+  { id: "community", label: "Community" },
   { id: "contact", label: "Contact" },
 ] as const;
+
+/** SynCircle — a tech community the owner is a member of. Text is taken from syncircle.org. */
+export const community = {
+  name: "SynCircle",
+  href: "https://syncircle.org/",
+  tagline: "Connecting Technology Talent. Building the future.",
+  description:
+    "An independent global network dedicated to connecting technology talent with peer mentorship, technical workshops, and career advancement.",
+  role: "Member",
+  badge: "Listed among the founding members",
+  socials: [
+    { label: "Instagram", href: "https://www.instagram.com/syncirclecommunity/" },
+    { label: "X", href: "https://x.com/SynCircle" },
+  ],
+  pillars: [
+    { name: "Connect", text: "Peer networking and executive mentorship networks." },
+    { name: "Learn", text: "Sessions on AI orchestration, cloud native architectures and modern software engineering." },
+    { name: "Develop", text: "Hands-on workshops, webinars and credentialed training." },
+    { name: "Contribute", text: "Open-source initiatives, tech policy discussions and social-impact tech projects." },
+    { name: "Bridge", text: "Bridging academia and industry through Forward Deployment Engineering." },
+    { name: "Empower", text: "Digital literacy, data privacy and ethical technology adoption." },
+  ],
+} as const;

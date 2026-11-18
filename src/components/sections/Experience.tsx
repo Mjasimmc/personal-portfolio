@@ -40,13 +40,13 @@ export function Experience() {
     <>
       <SectionHeading
         index="03"
-        eyebrow="Experience"
+        eyebrow="Journey"
         title={
           <>
-            Three years, three teams, <span className="font-serif-italic text-silver">production every time.</span>
+            One step at a time, <span className="font-serif-italic text-silver">always learning.</span>
           </>
         }
-        lede="Roles as listed on the resume — responsibilities, stack and verified outcomes. No invented metrics."
+        lede="The path so far — what I worked on, the technologies I picked up and what each stage taught me."
       />
 
       <div ref={wrap} className="relative">

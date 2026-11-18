@@ -29,9 +29,13 @@ export function CameraRig({ reduced, distance }: { reduced: boolean; distance: n
   useFrame((state, dt) => {
     if (reduced) return;
     const cam = state.camera;
-    cam.position.x = MathUtils.damp(cam.position.x, target.current.x * 0.9, 2.2, dt);
-    cam.position.y = MathUtils.damp(cam.position.y, target.current.y * 0.55, 2.2, dt);
+    // Scroll "travel": as the hero scrolls away the camera dollies in, drifts sideways and banks slightly.
+    const p = MathUtils.clamp(window.scrollY / Math.max(window.innerHeight, 1), 0, 1);
+    cam.position.x = MathUtils.damp(cam.position.x, target.current.x * 0.9 + p * 1.4, 2.2, dt);
+    cam.position.y = MathUtils.damp(cam.position.y, target.current.y * 0.55 - p * 0.5, 2.2, dt);
+    cam.position.z = MathUtils.damp(cam.position.z, distance - p * 2.6, 2.6, dt);
     cam.lookAt(0, 0, 0);
+    cam.rotateZ(p * 0.14);
   });
 
   return null;

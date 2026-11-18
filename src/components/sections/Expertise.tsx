@@ -26,13 +26,13 @@ export function Expertise() {
     <>
       <SectionHeading
         index="02"
-        eyebrow="Expertise"
+        eyebrow="Toolkit"
         title={
           <>
-            A full-stack toolkit, <span className="font-serif-italic text-silver">end to end.</span>
+            Tools I use, <span className="font-serif-italic text-silver">and keep adding to.</span>
           </>
         }
-        lede="Only what I actually ship with, grouped the way the resume groups it — no proficiency scores, no padding."
+        lede="Technologies I actually build with, grouped by area — no proficiency scores, no padding. The list keeps growing."
       />
 
       <Reveal>

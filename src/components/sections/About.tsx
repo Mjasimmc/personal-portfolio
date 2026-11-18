@@ -1,17 +1,16 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Spotlight } from "@/components/ui/Spotlight";
-import { experience, profile } from "@/data/portfolio";
+import { profile, skillCategories } from "@/data/portfolio";
 import { projects } from "@/data/projects";
 
 const facts = [
-  { value: `${profile.yearsExperience}`, label: "Years shipping production software" },
-  { value: String(experience.length), label: "Teams, from startup to enterprise clients" },
-  { value: String(projects.length), label: "Production-grade platforms built" },
+  { value: `${profile.yearsExperience}`, label: "Years of building and learning" },
+  { value: String(skillCategories.flatMap((c) => c.skills).length), label: "Technologies in the toolkit" },
+  { value: String(projects.length), label: "Projects built along the way" },
 ];
 
 export function About() {
-  const current = experience[0];
   return (
     <>
       <SectionHeading
@@ -19,7 +18,7 @@ export function About() {
         eyebrow="About"
         title={
           <>
-            Engineering digital products, <span className="font-serif-italic text-silver">end to end.</span>
+            Curious by default, <span className="font-serif-italic text-silver">building as I go.</span>
           </>
         }
         lede={`${profile.title} based in ${profile.location}.`}
@@ -28,19 +27,18 @@ export function About() {
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-7" selector="[data-line]">
           <p data-line className="text-[clamp(1.2rem,5.2vw,2rem)] leading-snug tracking-tight text-mist md:text-[clamp(1.35rem,2.3vw,2rem)]">
-            I&apos;m {profile.name}, a full stack software developer. For the past three-plus years I&apos;ve
-            been shipping production web applications — enterprise-grade React and Next.js frontends,
-            reusable component libraries, and the secure REST and GraphQL services behind them.
+            I&apos;m {profile.name}, a tech enthusiast travelling through the world of technology — happy to
+            adapt to new tools and ideas, and curious about where the future of tech is heading.
           </p>
           <p data-line className="mt-8 max-w-2xl text-base leading-relaxed text-silver-dim md:text-lg">
-            Today I&apos;m a {current.position} at {current.company}, building for multiple production
-            clients with TypeScript, NestJS, GraphQL and MongoDB, containerising services with Docker and
-            shipping through GitHub Actions. Before that I built business-critical systems for{" "}
-            {experience[1].company} and trained as a MERN stack developer at {experience[2].company}.
+            I learn by building. Over the past three-plus years that has meant web applications from
+            interface to API with React, Next.js, TypeScript and Node.js, and working with AI tools like
+            Cursor and Claude every day to see how the way we build is changing.
           </p>
           <p data-line className="mt-6 max-w-2xl text-base leading-relaxed text-silver-dim md:text-lg">
-            What I care about: clean, maintainable, production-ready code — performance optimisation,
-            secure authentication, clean architecture and honest code reviews.
+            Right now I&apos;m exploring RAG and generative AI. What drives me is building an identity in
+            tech, one thing learned and made at a time — and being part of communities like SynCircle, where
+            I&apos;m listed among the founding members, and where that learning is shared.
           </p>
         </Reveal>
 

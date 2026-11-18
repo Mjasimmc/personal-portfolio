@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowIcon, LinkButton } from "@/components/ui/LinkButton";
-import { Magnetic } from "@/components/ui/Magnetic";
+import { useEffect, useState, type SubmitEvent } from "react";
+import { ArrowIcon } from "@/components/ui/LinkButton";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { profile } from "@/data/portfolio";
+
+const field =
+  "w-full rounded-2xl border border-line bg-transparent px-4 py-3 text-mist outline-none transition-colors placeholder:text-silver/50 focus:border-electric";
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
@@ -15,6 +17,33 @@ export function Contact() {
     const t = setTimeout(() => setCopied(false), 2200);
     return () => clearTimeout(t);
   }, [copied]);
+
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const submit = async (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.reportValidity()) return;
+    setStatus("sending");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      });
+      if (res.status === 429) {
+        setErrorMsg("Too many attempts. Please wait a minute.");
+        throw new Error("rate");
+      }
+      if (!res.ok) throw new Error("failed");
+      form.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  };
 
   const copy = async () => {
     try {
@@ -35,7 +64,7 @@ export function Contact() {
 
       <div className="relative">
         <SectionHeading
-          index="06"
+          index="07"
           eyebrow="Contact"
           align="left"
           title={
@@ -68,13 +97,41 @@ export function Contact() {
                 {copied ? "Email address copied to clipboard" : ""}
               </span>
             </div>
-            <div className="mt-10">
-              <Magnetic>
-                <LinkButton href={`mailto:${profile.email}?subject=${encodeURIComponent("Let's build something")}`}>
-                  Start a conversation
-                </LinkButton>
-              </Magnetic>
-            </div>
+            <form onSubmit={submit} noValidate className="mt-10 flex max-w-xl flex-col gap-4">
+              <label className="flex flex-col gap-2">
+                <span className="label-mono">Name</span>
+                <input name="name" required maxLength={120} autoComplete="name" className={field} />
+              </label>
+              <label className="flex flex-col gap-2">
+                <span className="label-mono">Email</span>
+                <input name="email" type="email" required maxLength={200} autoComplete="email" className={field} />
+              </label>
+              <label className="flex flex-col gap-2">
+                <span className="label-mono">Message</span>
+                <textarea name="message" required rows={5} maxLength={5000} className={field} />
+              </label>
+              {/* Honeypot: hidden from people, filled by bots */}
+              <input
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
+              <div className="mt-2 flex flex-wrap items-center gap-4">
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="rounded-full border border-line px-6 py-3 font-mono text-[12px] tracking-wider text-mist transition-colors hover:border-silver/50 disabled:opacity-60"
+                >
+                  {status === "sending" ? "Sending…" : "Send message"}
+                </button>
+                <span role="status" aria-live="polite" className="font-mono text-[11px] tracking-wider text-silver">
+                  {status === "sent" && "Thanks. I'll reply within 48 hours."}
+                  {status === "error" && (errorMsg || "Something went wrong. Please email me directly.")}
+                </span>
+              </div>
+            </form>
           </div>
 
           <ul className="flex flex-col md:col-span-5">
