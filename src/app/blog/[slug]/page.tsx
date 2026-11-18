@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, posts } from "@/data/posts";
+import { getService } from "@/data/services";
 import { JsonLd, blogPostingSchema, breadcrumbSchema } from "@/lib/jsonld";
 
 export const dynamicParams = false;
@@ -72,6 +73,11 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
             View the project →
           </Link>
         )}
+        {p.serviceSlugs?.map(getService).filter((s) => s !== undefined).map((s) => (
+          <Link key={s.slug} href={`/services/${s.slug}`} className="label-mono text-silver transition-colors hover:text-mist">
+            {s.name} →
+          </Link>
+        ))}
         <Link href="/blog" className="label-mono transition-colors hover:text-mist">
           ← All posts
         </Link>

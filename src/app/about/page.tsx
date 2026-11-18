@@ -3,7 +3,7 @@ import Link from "next/link";
 import { JsonLd, breadcrumbSchema } from "@/lib/jsonld";
 import { community, education, profile, skillCategories } from "@/data/portfolio";
 
-const title = `About ${profile.name}: tech engineer from ${profile.location.split(",")[0]}`;
+const title = `About ${profile.name}: software creator from ${profile.location.split(",")[0]}`;
 const description = `${profile.summary} Based in ${profile.location}.`;
 
 export const metadata: Metadata = {
@@ -36,6 +36,7 @@ export default function AboutPage() {
       <p className="mt-6 max-w-3xl leading-relaxed text-silver-dim md:text-lg">
         {profile.fullName} is a {profile.title.toLowerCase()} based in {profile.location}. {profile.summary}
       </p>
+      <p className="mt-6 max-w-3xl leading-relaxed text-silver-dim md:text-lg">{profile.journey}</p>
 
       <section className="mt-20" aria-labelledby="toolkit">
         <h2 id="toolkit" className="label-mono">

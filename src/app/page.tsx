@@ -7,6 +7,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Education } from "@/components/sections/Education";
 import { Community } from "@/components/sections/Community";
 import { Contact } from "@/components/sections/Contact";
+import { HomeServices } from "@/components/sections/HomeServices";
 import { Marquee } from "@/components/ui/Marquee";
 import { PhraseStrip } from "@/components/ui/PhraseStrip";
 import { cn } from "@/lib/utils";
@@ -27,6 +28,7 @@ export default function Home() {
       <Section id="about">
         <About />
       </Section>
+      <HomeServices />
       <PhraseStrip />
       <Section id="expertise">
         <Expertise />

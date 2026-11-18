@@ -6,12 +6,15 @@ export const profile: Profile = {
   fullName: "Muhammed Jasim M C",
   firstName: "Muhammed",
   lastName: "Jasim",
-  title: "Tech Engineer",
-  designation: "Tech Engineer",
+  title: "Software Creator",
+  designation: "Software Creator",
+  tagline: "I imagine it. I create it. I automate it.",
   statement:
-    "Travelling through the world of tech — adapting to new technologies, learning where the future is heading, and building an identity along the way.",
+    "I turn imagination into intelligent, automated software: custom products, AI-powered applications and business automation, taken from idea to a working system.",
   summary:
-    "A tech enthusiast travelling through the world of technology. Always willing to adapt to new tools and ideas, curious about the future of tech, and building an identity through what I learn and make.",
+    "A software creator who takes an idea, understands what is possible, designs the solution, architects the system and builds it into working software. Curious about where technology is heading, and always adapting to new tools and ideas.",
+  journey:
+    "Travelling through the world of tech — adapting to new technologies, learning where the future is heading, and building an identity along the way. A tech enthusiast who builds an identity through what he learns and makes.",
   location: "Kozhikode, Kerala, India",
   email: "mjasimmc@gmail.com",
   phone: "+919778218906",

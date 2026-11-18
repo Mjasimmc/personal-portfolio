@@ -10,6 +10,7 @@ import { Nav } from "@/components/layout/Nav";
 import { AmbientGlow } from "@/components/layout/AmbientGlow";
 import { ProgressRail } from "@/components/layout/ProgressRail";
 import { Footer } from "@/components/layout/Footer";
+import { Analytics } from "@/components/layout/Analytics";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
@@ -39,6 +40,11 @@ export const metadata: Metadata = {
   category: "technology",
   formatDetection: { telephone: false, email: false, address: false },
   alternates: { canonical: "/" },
+  // Search engine ownership tokens come from env so they can be set without a code change.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION } : undefined,
+  },
   openGraph: {
     type: "website",
     locale: site.locale,
@@ -83,6 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ProgressRail />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

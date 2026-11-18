@@ -24,9 +24,18 @@ export function Footer() {
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {[
             ["/about", "About"],
+            ["/projects", "Work"],
+            ["/capabilities", "Capabilities"],
             ["/services", "Services"],
+            ["/ai-automation", "AI & Automation"],
+            ["/work-with-me", "Work With Me"],
             ["/research", "Research"],
             ["/blog", "Blog"],
+            ["/resources", "Resources"],
+            ["/faq", "FAQ"],
+            ["/contact", "Contact"],
+            ["/privacy", "Privacy"],
+            ["/terms", "Terms"],
           ].map(([href, label]) => (
             <li key={href}>
               <Link href={href} className="label-mono text-silver transition-colors hover:text-mist">

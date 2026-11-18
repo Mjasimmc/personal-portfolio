@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProject, projects } from "@/data/projects";
+import { services } from "@/data/services";
 import { JsonLd, breadcrumbSchema, projectSchema } from "@/lib/jsonld";
 import { ProjectVisual } from "@/components/ui/ProjectVisual";
 import { Reveal } from "@/components/ui/Reveal";
@@ -34,6 +36,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   if (!p) notFound();
   const idx = projects.findIndex((x) => x.slug === p.slug);
   const next = projects[(idx + 1) % projects.length];
+  const relatedServices = services.filter((s) => s.projectSlugs.includes(p.slug));
 
   return (
     <main id="main" className="mx-auto w-full max-w-[1600px] px-6 pb-28 pt-32 md:pt-40">
@@ -41,7 +44,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "Projects", path: "/#projects" },
+          { name: "Work", path: "/projects" },
           { name: p.title, path: `/projects/${p.slug}` },
         ])}
       />
@@ -52,8 +55,8 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
             Home
           </Link>
           <span aria-hidden>/</span>
-          <Link href="/#projects" className="transition-colors hover:text-mist">
-            Projects
+          <Link href="/projects" className="transition-colors hover:text-mist">
+            Work
           </Link>
           <span aria-hidden>/</span>
           <span className="text-silver">{p.title}</span>
@@ -73,6 +76,22 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       <Reveal className="mt-14">
         <ProjectVisual kind={p.visual} className="aspect-[16/10] rounded-[32px] border border-line md:aspect-[21/9]" />
       </Reveal>
+
+      {p.screenshot && (
+        <Reveal className="mt-8">
+          <figure>
+            <Image
+              src={p.screenshot.src}
+              alt={p.screenshot.alt}
+              width={p.screenshot.width}
+              height={p.screenshot.height}
+              sizes="(min-width: 1600px) 1500px, 100vw"
+              className="h-auto w-full rounded-[24px] border border-line"
+            />
+            <figcaption className="label-mono mt-3">Screenshot of the live site</figcaption>
+          </figure>
+        </Reveal>
+      )}
 
       <section className="mt-20 grid gap-12 md:grid-cols-12">
         <Reveal className="md:col-span-4">
@@ -108,9 +127,26 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </Reveal>
       </section>
 
+      {relatedServices.length > 0 && (
+        <section className="mt-20" aria-labelledby="related-services">
+          <h2 id="related-services" className="label-mono">
+            Related services
+          </h2>
+          <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+            {relatedServices.map((s) => (
+              <li key={s.slug}>
+                <Link href={`/services/${s.slug}`} className="text-lg text-silver transition-colors hover:text-mist">
+                  {s.name} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <footer className="mt-24 flex flex-col gap-8 border-t border-line pt-10 md:flex-row md:items-end md:justify-between">
-        <Link href="/#projects" className="label-mono transition-colors hover:text-mist">
-          ← All projects
+        <Link href="/projects" className="label-mono transition-colors hover:text-mist">
+          ← All work
         </Link>
         <Link href={`/projects/${next.slug}`} className="group md:text-right">
           <span className="label-mono">Next project</span>

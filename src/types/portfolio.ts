@@ -40,6 +40,8 @@ export type Project = {
   visual: ProjectVisual;
   url?: string;
   repo?: string;
+  /** Real screenshot of the live site, taken from the public URL. Never mock-ups. */
+  screenshot?: { src: string; alt: string; width: number; height: number };
 };
 
 export type Education = {
@@ -58,8 +60,11 @@ export type Profile = {
   lastName: string;
   title: string;
   designation: string;
+  tagline: string;
   statement: string;
   summary: string;
+  /** Earlier identity copy, kept for the About page. */
+  journey: string;
   location: string;
   email: string;
   phone: string;

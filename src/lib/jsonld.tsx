@@ -29,7 +29,7 @@ export const personSchema = {
     "@type": "ContactPoint",
     telephone: site.phone,
     email: site.email,
-    contactType: "engineering and development enquiries",
+    contactType: "software project enquiries",
     areaServed: "Worldwide",
     availableLanguage: ["English", "Malayalam"],
   },
@@ -55,7 +55,7 @@ export const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": absoluteUrl("/#service"),
-  name: `${site.name} | Engineering & Development`,
+  name: `${site.name} | Custom Software, AI and Automation`,
   url: site.url,
   telephone: site.phone,
   email: site.email,
@@ -124,4 +124,41 @@ export const breadcrumbSchema = (items: { name: string; path: string }[]) => ({
     name: it.name,
     item: absoluteUrl(it.path),
   })),
+});
+
+export const webPageSchema = (p: { path: string; name: string; description: string; type?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "FAQPage" }) => ({
+  "@context": "https://schema.org",
+  "@type": p.type ?? "WebPage",
+  "@id": absoluteUrl(`${p.path}#webpage`),
+  url: absoluteUrl(p.path),
+  name: p.name,
+  description: p.description,
+  inLanguage: "en",
+  isPartOf: { "@id": absoluteUrl("/#website") },
+  about: { "@id": absoluteUrl("/#person") },
+});
+
+export const itemListSchema = (items: { name: string; path: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: items.map((it, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: it.name,
+    url: absoluteUrl(it.path),
+  })),
+});
+
+/** Service page schema. The provider is the Person node; no ratings, reviews or prices are asserted. */
+export const serviceDetailSchema = (s: { slug: string; name: string; description: string; secondaryKeywords: string[] }) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": absoluteUrl(`/services/${s.slug}#service`),
+  name: s.name,
+  description: s.description,
+  url: absoluteUrl(`/services/${s.slug}`),
+  serviceType: s.name,
+  keywords: s.secondaryKeywords.join(", "),
+  areaServed: "Worldwide",
+  provider: { "@id": absoluteUrl("/#person") },
 });

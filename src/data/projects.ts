@@ -57,6 +57,12 @@ export const projects: Project[] = [
     tech: ["Next.js", "MongoDB", "Redis", "Zod", "Zustand", "React Query", "Argon2"],
     visual: "commerce",
     url: "https://ecom-nextjs-six-lac.vercel.app",
+    screenshot: {
+      src: "/screens/enterprise-commerce-platform.jpg",
+      alt: "Home page of the Enterprise Commerce Platform storefront, showing the hero and shop-by-category section",
+      width: 1440,
+      height: 900,
+    },
     repo: "https://github.com/jasim-sct/ecom-nextjs",
   },
   {
@@ -75,6 +81,12 @@ export const projects: Project[] = [
     tech: ["Next.js", "React Three Fiber", "Three.js", "GSAP", "Tailwind CSS", "TypeScript"],
     visual: "commerce",
     url: "https://f-tech-solutions.vercel.app",
+    screenshot: {
+      src: "/screens/f-tech-solutions.jpg",
+      alt: "Opening screen of the F-Tech Solutions immersive website asking what do you want to build",
+      width: 1440,
+      height: 900,
+    },
     repo: "https://github.com/jasim-sct/f-tech-solutions",
   },
   {

@@ -24,7 +24,7 @@ export function Projects() {
             Things I&apos;ve built <span className="font-serif-italic text-silver">to learn by doing.</span>
           </>
         }
-        lede="Selected builds, what each one involved and the technology behind it. No public links are listed, so none are invented — each piece gets an abstract visual, not a mock screenshot."
+        lede="Selected builds, what each one involved and the technology behind it. Links and screenshots appear only where a live site exists; every other piece gets an abstract visual, never a mock screenshot."
       />
       <ol className="flex flex-col gap-16 md:gap-36">
         {projects.map((p, i) => (

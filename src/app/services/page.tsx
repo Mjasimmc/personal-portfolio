@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { JsonLd, breadcrumbSchema, faqSchema } from "@/lib/jsonld";
+import { Block, CtaBand, PageShell } from "@/components/ui/PageShell";
+import { faqSchema, itemListSchema, webPageSchema } from "@/lib/jsonld";
 import { faqs } from "@/data/faqs";
-import { profile } from "@/data/portfolio";
+import { services } from "@/data/services";
 import { site } from "@/lib/site";
 
-const title = "Engineering & Development Services";
-const description = `Hire ${profile.name}, a tech engineer in ${profile.location}, for web development, full stack engineering, technical research, prototyping and engineering help. Fast delivery, clear communication.`;
+const title = "Software Creation, AI and Automation Services";
+const description =
+  "Eight focused services from a software creator: custom software, AI-powered applications, agentic AI, business automation, SaaS, enterprise platforms, web applications and AI integration.";
 
 export const metadata: Metadata = {
   title,
@@ -18,53 +20,35 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main id="main" className="mx-auto w-full max-w-[1600px] px-6 pb-28 pt-32 md:pt-40">
-      <JsonLd data={faqSchema(faqs)} />
-      <JsonLd
-        data={breadcrumbSchema([
-          { name: "Home", path: "/" },
-          { name: "Services", path: "/services" },
-        ])}
-      />
-      <nav aria-label="Breadcrumb" className="label-mono flex items-center gap-3">
-        <Link href="/" className="transition-colors hover:text-mist">
-          Home
-        </Link>
-        <span aria-hidden>/</span>
-        <span className="text-silver">Services</span>
-      </nav>
-
-      <h1 className="text-display mt-10 text-[clamp(2.6rem,7vw,7rem)] text-mist">Engineering &amp; development, done fast.</h1>
-      <p className="mt-6 max-w-3xl leading-relaxed text-silver-dim md:text-lg">
-        {profile.name} is a tech engineer based in {profile.location}. From idea to shipped product: building, researching
-        and solving technical problems across the stack.
-      </p>
-
-      <section className="mt-20" aria-labelledby="what">
-        <h2 id="what" className="label-mono">
-          What I can do
-        </h2>
-        <ul className="mt-6 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-          {site.services.map((s) => (
-            <li key={s} className="bg-obsidian p-6 text-lg text-mist">
-              {s}
+    <PageShell
+      crumbs={[{ name: "Services", path: "/services" }]}
+      h1="Software creation, from idea to automated system."
+      intro="Each service below is a distinct way of working with me. Pick the one closest to your situation, or describe your idea and I will tell you which fits."
+      extraSchema={[
+        webPageSchema({ path: "/services", name: title, description, type: "CollectionPage" }),
+        itemListSchema(services.map((s) => ({ name: s.name, path: `/services/${s.slug}` }))),
+        faqSchema(faqs),
+      ]}
+    >
+      <Block id="services" title="Services">
+        <ul className="grid gap-px border border-line bg-line md:grid-cols-2">
+          {services.map((s) => (
+            <li key={s.slug} className="bg-obsidian">
+              <Link href={`/services/${s.slug}`} className="group block h-full p-7">
+                <h2 className="text-2xl text-mist transition-colors group-hover:text-electric">{s.name}</h2>
+                <p className="mt-3 leading-relaxed text-silver-dim">{s.description}</p>
+              </Link>
             </li>
           ))}
         </ul>
-      </section>
+      </Block>
 
-      <section className="mt-20" aria-labelledby="stack">
-        <h2 id="stack" className="label-mono">
-          Stack
-        </h2>
-        <p className="mt-4 max-w-3xl leading-relaxed text-silver">{site.skills.join(" · ")}</p>
-      </section>
+      <Block id="stack" title="Stack">
+        <p className="max-w-3xl leading-relaxed text-silver">{site.skills.join(" · ")}</p>
+      </Block>
 
-      <section className="mt-20" aria-labelledby="faq">
-        <h2 id="faq" className="label-mono">
-          Frequently asked
-        </h2>
-        <dl className="mt-6 divide-y divide-line border-t border-line">
+      <Block id="faq" title="Frequently asked">
+        <dl className="divide-y divide-line border-t border-line">
           {faqs.map((f) => (
             <div key={f.q} className="grid gap-3 py-6 md:grid-cols-12">
               <dt className="text-lg text-mist md:col-span-5">{f.q}</dt>
@@ -72,19 +56,8 @@ export default function ServicesPage() {
             </div>
           ))}
         </dl>
-      </section>
-
-      <section className="mt-20 flex flex-wrap items-center gap-6 border-t border-line pt-10">
-        <a href={`tel:${profile.phone}`} className="text-2xl text-mist transition-colors hover:text-electric">
-          {profile.phoneDisplay}
-        </a>
-        <a href={`mailto:${profile.email}`} className="text-2xl text-silver transition-colors hover:text-mist">
-          {profile.email}
-        </a>
-        <Link href="/#contact" className="label-mono transition-colors hover:text-mist">
-          Contact form →
-        </Link>
-      </section>
-    </main>
+      </Block>
+      <CtaBand subject="Services enquiry" />
+    </PageShell>
   );
 }

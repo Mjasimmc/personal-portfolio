@@ -1,13 +1,25 @@
 # Muhammed Jasim M C
 
-> Tech engineer from Kozhikode, Kerala, India. Full stack engineering and development, technical research, prototyping and engineering help. Open to clients worldwide.
+> Software creator from Kozhikode, Kerala, India. I imagine it. I create it. I automate it. Custom software, AI-powered applications, agentic AI, business automation and SaaS products. Open to clients worldwide.
 
 ## Pages
 - [Portfolio](https://jasim.syncircle.org/): profile, skills, projects, community
 - [About](https://jasim.syncircle.org/about): who Muhammed Jasim is, toolkit, community
 - [Research](https://jasim.syncircle.org/research): technical research areas and process
 - [Blog](https://jasim.syncircle.org/blog): articles on engineering, SEO and structured data
-- [Services](https://jasim.syncircle.org/services): what can be hired, stack, FAQ
+- [Services](https://jasim.syncircle.org/services): eight services, stack, FAQ
+- [Custom software](https://jasim.syncircle.org/services/custom-software-development)
+- [AI-powered software](https://jasim.syncircle.org/services/ai-powered-software-development)
+- [Agentic AI](https://jasim.syncircle.org/services/agentic-ai-development)
+- [Business process automation](https://jasim.syncircle.org/services/business-process-automation)
+- [SaaS product development](https://jasim.syncircle.org/services/saas-product-development)
+- [Enterprise software](https://jasim.syncircle.org/services/enterprise-software-solutions)
+- [Web applications](https://jasim.syncircle.org/services/web-application-development)
+- [AI integration and workflow automation](https://jasim.syncircle.org/services/ai-integration-workflow-automation)
+- [Work](https://jasim.syncircle.org/projects): selected projects
+- [Capabilities](https://jasim.syncircle.org/capabilities)
+- [Work with me](https://jasim.syncircle.org/work-with-me)
+- [FAQ](https://jasim.syncircle.org/faq)
 
 ## Contact
 - Phone / WhatsApp: +91 97782 18906
